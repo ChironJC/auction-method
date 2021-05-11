@@ -2,6 +2,10 @@ from gen_AP import gen_AP
 import numpy as np
 import random
 
+# Noting that auction method maximize target function. 
+# For minimizing function, -1 should be mutiplied to cost matrix
+
+
 ###########
 # 1. Start with a set U of all bidders.U denotes the set of allunassigned bidders. 
 # We also maintain a set of prices which are initialized to all 0, 
@@ -15,22 +19,25 @@ import random
 # 4. Now assign item j to bidder i. If item j was previously assigned to another bidders, then remove that assignment and adds to U.
 # 5. If U becomes empty, the algorithm is over; otherwise, go back to Step (2).
 
-
+# generate random cost matrix
 dim = 4 # size of cost matrix should be dim*dim
 c_range = 1 # lagest possible value in cost
 cost = gen_AP(dim, c_range) # cost matrix
-
+'''
 cost = -1 * np.array([[14, 5, 8, 7],
         [2, 12, 6, 5],
         [7, 8, 3, 9],
         [2, 4, 6, 10]])
+'''
 
+# initialize parameters
 U = list(range(dim)) # initialize unassigned bidders
 P = np.zeros(dim) # initialize the p list
 A = {} # dict for assignment: keys are terminal points and items are start points
 
-# sorting algorithm copyed from leetcode https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/partitionfen-er-zhi-zhi-you-xian-dui-lie-java-dai-/
+# sorting algorithm copied from leetcode https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/partitionfen-er-zhi-zhi-you-xian-dui-lie-java-dai-/
 # dont know how it works
+# expected complexity O(n), maximum complexity O(n^2)
 def find (row):
     origin_row = row.copy() # partition method will change the arrangement of row
     size = len(row)
