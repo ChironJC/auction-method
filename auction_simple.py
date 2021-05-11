@@ -18,11 +18,12 @@ import random
 
 dim = 4 # size of cost matrix should be dim*dim
 c_range = 1 # lagest possible value in cost
-# cost = gen_AP(dim, c_range) # cost matrix
-cost = np.array([[1, 3, 6, 1],
-        [2, 4, 7, 3],
-        [2, 5, 7, 2],
-        [1, 3, 5, 1]])
+cost = gen_AP(dim, c_range) # cost matrix
+
+cost = -1 * np.array([[14, 5, 8, 7],
+        [2, 12, 6, 5],
+        [7, 8, 3, 9],
+        [2, 4, 6, 10]])
 
 U = list(range(dim)) # initialize unassigned bidders
 P = np.zeros(dim) # initialize the p list
